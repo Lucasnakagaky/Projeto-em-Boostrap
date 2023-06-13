@@ -98,6 +98,44 @@ setTimeout(function() {
 }, 250);
 
 
+// Filtro do portifólio
+
+$('.filter-btn').on('click', function() {
+
+  let type = $(this).attr('id');
+  let boxes = $('.project-box');
+
+  $('.main-btn').removeClass('active');
+  $(this).addClass('active')
+
+  if(type == 'dsg-btn'){
+    eachboxes('dsg', boxes);
+  } else if (type == 'dev-btn'){
+    eachboxes('dev', boxes);
+  } else if (type == 'seo-btn'){
+    eachboxes('seo', boxes);
+  } else {
+    eachboxes('all', boxes);
+  }
+
+
+});
+
+function eachboxes(type, boxes) {
+  if(type == 'all'){
+    $(boxes).fadeIn();
+  } else {
+    $(boxes).each(function() {
+
+      if(!$(this).hasClass(type)) {
+        $(this).fadeOut('slow');
+      } else {
+        $(this).fadeIn()
+      }
+    });
+  }
+}
+
 
  
 });
